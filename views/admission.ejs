@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/style2.css">
+    <script src="/script/script.js"></script>
+    <script src="/script/contact.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <title>Rock Foundations School</title>
+</head>
+
+<body style="background-image: none !important;  margin-left: 0 !important; margin-right: 0 !important;">
+    <nav class="container-fluid" style="background-color: rgb(252, 251, 250) !important;">
+        <h1>The Rock Foundations</h1>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li class="dropdown"><a class="dropdownbtn" href="#">About Us<i class="fa fa-caret-down" style="color: rgb(194, 9, 9);"></i></a>
+                <ol class="dropdown-content">
+                    <a href="/about">Our Vission</a>
+                    <a href="/about">Our Mission</a>
+                    <a href="/about">Management Team</a>
+                </ol>
+            </li>
+            <li class="active"><a href="#admissions">Admissions</a></li>
+            <li><a href="/fees">Fees Payment</a></li>
+            <li class="dropdown"><a class="dropdownbtn" href="#">Results<i class="fa fa-caret-down" style="color: rgb(187, 13, 13);"></i></a>
+                <ol class="dropdown-content">
+                    <a href="#" class="open" onclick="checkingResult()">Check Result</a>
+                    <a href="#">Buy PIN</a>
+                </ol>
+            </li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <div class="row mt-5">
+        <div class="col-md-5" style="background-color: brown; color: cornsilk;">
+            <div style=" color: cornsilk; text-align: center;">
+                <h1>The Rock Foundations School</h1>
+                <h2>Admission Form</h2>
+            </div>
+            <hr>
+            <div>
+                <!-- Error messages here -->
+
+                <form action="/admissions" method="POST">
+                    <div class="container">
+                        <h2>Student's Basic Information</h2>
+                        <div id="din">
+                            <label for="firstName">First Name:</label>
+                            <input type="text" placeholder="First Name" name="firstName" id="firstname" required>
+                        </div>
+                        <div id="din">
+                            <label for="surName">Surname:</label>
+                            <input type="text" placeholder="Surname" name="surName" id="surname" required>
+                        </div>
+                        <div id="din">
+                            <label for="otherName">Other Name:</label>
+                            <input type="text" placeholder="Other name" name="otherName" id="othername" required>
+                        </div>
+                        <div id="din">
+                            <label for="birthdate">Date of birth:</label>
+                            <input type="date" placeholder="Date of birth" name="birthdate" id="birthdate" required>
+                        </div>
+                        <div id="din">
+                            <label for="nationality">Nationality:</label>
+                            <select name="nationality" id="nationality" onchange="countryChange(this);" required>
+                                 <option value="empty">Select your country</option>
+                         <option value="Nigeria">Nageria</option>
+                         <option value="Ghana">Ghana</option>
+                         <option value="Gambia">Gambia</option>
+                         <option value="USA">USA</option>
+                         <option value="Canada">Canada</option>
+                    </select>
+                        </div>
+                        <div id="din">
+                            <label for="state">State of Origin:</label>
+                            <select name="state" id="state" onchange="stateChange(this);" required>
+                         <option value="empty">Select your State</option>
+                    </select>
+                        </div>
+                        <div id="din">
+                            <label for="lga">Local Government Area:</label>
+                            <select name="lga" id="lga" required>
+                         <option value="0">Select your LGA</option>
+                    </select>
+                        </div>
+                        <div id="din">
+                            <label for="entranceExamCentre">Entrance Exam Centre:</label>
+                            <select name="entranceExamCentre" id="examCentre" placeholder="Chose exam centre" required>
+                         <option value="">Choose your prefer exam centre</option>
+                                <option value="The Rock Foundations School, Down Market Road Obudu, Cross River State">The Rock Foundations School, Down Market Road Obudu, Cross River State</option>
+                         <option value="Federal Girls Science College Calabar, Cross River State">Federal Girls Science College Calabar, Cross River State</option>
+                         <option value="Announciation Girls Juniorate Igoli Ogoja, Cross River State">Announciation Girls Juniorate Igoli Ogoja, Cross River State</option>
+                         <option value="Federal Science College, Gboko, Benue State">Federal Science College, Gboko, Benue State</option>
+                        
+                    </select>
+                        </div>
+                        <div id="din">
+                            <label for="entryClass">Entry Class:</label>
+                            <select name="entryClass" id="class" required>
+                         <option value="select entry class">Select the entry class</option>
+                                <option value="jss1">JSS 1</option>
+                         <option value="jss2">JSS 2</option>
+                         <option value="jss3">JSS 3</option>
+                         <option value="sss1">SSS 1</option>
+                         <option value="sss2">SSS 2</option>
+                         <option value="sss3">SSS 3</option>
+                    </select>
+                        </div>
+                        <hr>
+                        <div id="din">
+                            <h2>Parent/Guardian Basic Information</h2>
+                        </div>
+                        <div id="din">
+                            <label for="parentName">Full Name:</label>
+                            <input type="text" name="parentName" id="parentName" required>
+                        </div>
+                        <div id="din">
+                            <label for="parentPhoneNumber">Phone Number:</label>
+                            <input type="text" name="parentPhoneNumber" id="parentPhoneNumber" required>
+                        </div>
+                        <div id="din">
+                            <label for="parentAddress">Address:</label>
+                            <input type="text" name="parentAddress" id="parentAddress" required>
+                        </div>
+                        <div id="din">
+                            <label for="parentEmail">Email Address:</label>
+                            <input type="email" name="parentEmail" id="parentEmail" required>
+                        </div>
+                        <hr>
+                        <div id="din">
+
+                            <button type="submit">Proceed to Pay Entrance Exam Fee</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="form-popup col-md-3" id="resultForm">
+            <form class="form-container" id="contactForm">
+                <h1 style="text-align: center;">Check Result/Report</h1>
+
+
+                <label for="PIN"><b>Result PIN</b></label>
+                <input type="text" placeholder="Enter result PIN" id="PIN" name="PIN" required>
+                <label for="Reg. Number"><b>Reg. Number</b></label>
+                <input type="text" placeholder="Enter registration number" id="regNum" name="regNum" required>
+
+                <button type="submit" class="btn">Check</button>
+                <button type="button" class="btn cancel" onclick="closeResultForm()">Close</button>
+            </form>
+        </div>
+        <div class="col-md-4" style="background-color: chocolate; color: cornsilk; text-align: center; height: fit-content;">
+
+            <div class="card" style="text-align: center;">
+                <h3 style="color: brown;">Entrance Exam Centre and Date</h3>
+            </div>
+
+
+            <div style="overflow-x:auto;">
+                <table>
+                    <tr style="font-weight: bolder; font-size: x-large;">
+                        <th>Centre</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr>
+                        <td>The Rock Foundations School, Down Market Road Obudu, Cross River State</td>
+                        <td>12th September, 2021</td>
+
+                    </tr>
+                    <tr>
+                        <td>Federal Girls Science College Calabar, Cross River State</td>
+                        <td>12th September, 2021</td>
+                    </tr>
+                    <tr>
+                        <td>Announciation Girls Juniorate Igoli Ogoja, Cross River State</td>
+                        <td>24th September, 2021</td>
+                    </tr>
+                    <tr>
+                        <td>Federal Science College, Gboko, Benue State</td>
+                        <td>28th September, 2021</td>
+                    </tr>
+                </table>
+            </div>
+            <hr>
+            <div><button><a href="#entranceExam" style="text-decoration: none !important;"><i class="fa fa-download" download="Entrance_exam" target="_blank"></i>DOWNLOAD PDF WITH ECTRANCE EXAM LOCATIONS AND DATE</button></div>
+        </div>
+        <hr>
+
+        <div id="footer">
+            <h4><i class="fa fa-copyright"></i>2021 The Rock Foundations School. All right reserved</h4>
+            <h4>Powered and managed by Godwin</h4>
+        </div>
+</body>
+
+</html>

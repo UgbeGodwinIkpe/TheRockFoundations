@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/style2.css">
+    <script src="/script/contact.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <title>Rock Foundations School</title>
+</head>
+
+<body style="background-image: none !important;  margin-left: 0 !important; margin-right: 0 !important;">
+    <nav class="container-fluid" style="background-color: rgb(252, 251, 250) !important;">
+        <h1>The Rock Foundations</h1>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li class="dropdown"><a class="dropdownbtn" href="#">About Us<i class="fa fa-caret-down" style="color: rgb(194, 9, 9);"></i></a>
+                <ol class="dropdown-content">
+                    <a href="/about">Our Vission</a>
+                    <a href="/about">Our Mission</a>
+                    <a href="/about">Management Team</a>
+                </ol>
+            </li>
+            <li class="active"><a href="#admissions">Admissions</a></li>
+            <li><a href="/fees">Fees Payment</a></li>
+            <li class="dropdown"><a class="dropdownbtn" href="#">Results<i class="fa fa-caret-down" style="color: rgb(187, 13, 13);"></i></a>
+                <ol class="dropdown-content">
+                    <a href="#" class="open" onclick="checkingResult()">Check Result</a>
+                    <a href="#">Buy PIN</a>
+                </ol>
+            </li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <div class="row mt-5">
+        <div class="col-md-7" style="background-color: brown; color: cornsilk;">
+            <div style=" color: cornsilk; text-align: center;">
+                <h1>The Rock Foundations School</h1>
+            </div>
+            <hr>
+            <div>
+                <form id="entranceExamFeeForm">
+                    <div class="container">
+                        <h2>Entrance Examination Fee <b>N5000</b></h2>
+                        <h6>Confirm the details below before you proceed to pay N5000 for the entrance exam</h6>
+                        <div id="din">
+                            <label for="first name">Ward Name:</label>
+                            <input type="text" id="fullName" name="fullName" value="<%=fullName%>" required>
+                        </div>
+                        <div id="din">
+                            <label for="entryClass">Entry Class:</label>
+                            <input type="text" id="entryClass" name="entryClass" value="<%= entryClass%>" required>
+                        </div>
+                        <div id="din">
+                            <label for="parentPhoneNumber">Parent Phone Number:</label>
+                            <input type="text" id="parentPhoneNumber" name="parentPhoneNumber" value="<%= parentPhoneNumber%>" required>
+                        </div>
+                        <div id="din">
+                            <label for="surname">Parent Email:</label>
+                            <input type="email" id="parentEmail" name="parentEmail" value="<%= parentEmail%>" required>
+                        </div>
+
+                        <hr>
+                        <div id="din">
+
+                            <button type="submit">Pay Now</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="form-popup col-md-5" id="resultForm">
+            <form class="form-container" id="contactForm">
+                <h1 style="text-align: center;">Check Result/Report</h1>
+
+
+                <label for="PIN"><b>Result PIN</b></label>
+                <input type="text" placeholder="Enter result PIN" id="PIN" name="PIN" required>
+                <label for="Reg. Number"><b>Reg. Number</b></label>
+                <input type="text" placeholder="Enter registration number" id="regNum" name="regNum" required>
+
+                <button type="submit" class="btn">Check</button>
+                <button type="button" class="btn cancel" onclick="closeResultForm()">Close</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <script src="/script/script1.js"></script>
+</body>
+<footer class="container" id="footer">
+    <h4><i class="fa fa-copyright"></i>2021 The Rock Foundations School. All right reserved</h4>
+    <h4>Powered and managed by Godwin</h4>
+</footer>
+
+</html>
