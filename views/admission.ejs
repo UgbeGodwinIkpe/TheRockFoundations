@@ -14,7 +14,7 @@
     <title>Rock Foundations School</title>
 </head>
 
-<body style="background-image: none !important;  margin-left: 0 !important; margin-right: 0 !important;">
+<body style="background-color: white !important;  margin-left: 0 !important; margin-right: 0 !important;">
     <nav class="container-fluid" style="background-color: rgb(252, 251, 250) !important;">
         <h1>The Rock Foundations</h1>
         <ul>
@@ -30,8 +30,8 @@
             <li><a href="/fees">Fees Payment</a></li>
             <li class="dropdown"><a class="dropdownbtn" href="#">Results<i class="fa fa-caret-down" style="color: rgb(187, 13, 13);"></i></a>
                 <ol class="dropdown-content">
-                    <a href="#" class="open" onclick="checkingResult()">Check Result</a>
-                    <a href="#">Buy PIN</a>
+                    <a href="/">Check Result</a>
+                    <a href="/">Buy PIN</a>
                 </ol>
             </li>
             <li><a href="#">Contact Us</a></li>
@@ -39,15 +39,29 @@
     </nav>
     <hr>
     <div class="row mt-5">
-        <div class="col-md-5" style="background-color: brown; color: cornsilk;">
+         
+                    <!-- Error messages here -->
+                    <% if(errors != ''){%>
+                        <div class='container alert alert-danger alert-dismissible' style="width: fit-content; height: fit-content; font-size: large;">
+                            <%-errors %>
+                                <a href="#" class="close" id="close" data-dismiss="alert" aria-label="close" style="margin-left: 20px; margin-right: 0;">&times;</a>
+                        </div>
+                        <%}%>
+                            <!-- success messages for contact form -->
+                            <% if(msg != ''){%>
+                                <div class='container alert alert-success alert-dismissible' style="width: fit-content; height: fit-content; font-size: large;">
+                                    <%-msg %>
+                                        <a href="#" class="close" id="close" data-dismiss="alert" aria-label="close" style="margin-left: 20px;">&times;</a>
+                                </div>
+                                <%}%>
+                
+        <div class="col-md-7" style="background-color: brown; color: cornsilk; width:inherit">
             <div style=" color: cornsilk; text-align: center;">
                 <h1>The Rock Foundations School</h1>
                 <h2>Admission Form</h2>
             </div>
             <hr>
-            <div>
-                <!-- Error messages here -->
-
+            <div class="form">
                 <form action="/admissions" method="POST">
                     <div class="container">
                         <h2>Student's Basic Information</h2>
@@ -142,22 +156,9 @@
                 </form>
             </div>
         </div>
-        <div class="form-popup col-md-3" id="resultForm">
-            <form class="form-container" id="contactForm">
-                <h1 style="text-align: center;">Check Result/Report</h1>
-
-
-                <label for="PIN"><b>Result PIN</b></label>
-                <input type="text" placeholder="Enter result PIN" id="PIN" name="PIN" required>
-                <label for="Reg. Number"><b>Reg. Number</b></label>
-                <input type="text" placeholder="Enter registration number" id="regNum" name="regNum" required>
-
-                <button type="submit" class="btn">Check</button>
-                <button type="button" class="btn cancel" onclick="closeResultForm()">Close</button>
-            </form>
-        </div>
-        <div class="col-md-4" style="background-color: chocolate; color: cornsilk; text-align: center; height: fit-content;">
-
+        
+        <div class="col-md-5" style="color: cornsilk; text-align: center; height: fit-content; margin-left: 30px;">
+           <div style="margin-top: 10px">
             <div class="card" style="text-align: center;">
                 <h3 style="color: brown;">Entrance Exam Centre and Date</h3>
             </div>
@@ -190,7 +191,8 @@
             </div>
             <hr>
             <div><button><a href="#entranceExam" style="text-decoration: none !important;"><i class="fa fa-download" download="Entrance_exam" target="_blank"></i>DOWNLOAD PDF WITH ECTRANCE EXAM LOCATIONS AND DATE</button></div>
-        </div>
+            </div>
+            </div>
         <hr>
 
         <div id="footer">

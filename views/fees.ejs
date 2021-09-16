@@ -14,8 +14,8 @@
     <title>Rock Foundations School</title>
 </head>
 
-<body>
-    <nav class="container-fluid" style="background-color: rgb(252, 251, 250) !important;">
+<body style="background-color:white">
+    <nav class="container-fluid">
         <h1>The Rock Foundations</h1>
         <ul>
             <li><a href="/">Home</a></li>
@@ -30,25 +30,25 @@
             <li class="active"><a href="#fees">Fees Payment</a></li>
             <li class="dropdown"><a class="dropdownbtn" href="#">Results<i class="fa fa-caret-down" style="color: rgb(187, 13, 13);"></i></a>
                 <ol class="dropdown-content">
-                    <a href="#" class="open" onclick="checkingResult()">Check Result</a>
-                    <a href="#">Buy PIN</a>
+                    <a href="/">Check Result</a>
+                    <a href="/">Buy PIN</a>
                 </ol>
             </li>
-            <li><a href="#">Contact Us</a></li>
+       
         </ul>
     </nav>
-    <hr>
-    <div class="row mt-5">
-        <div class="col-md-7" style="background-color: brown; color: cornsilk;">
+  
+    <div class="container">
+        <div  style="background-color: brown; color: cornsilk; margin-top:20px">
             <div style=" color: cornsilk; text-align: center;">
                 <h1>The Rock Foundations School</h1>
-                <h2>School Fee Payment</h2>
+                <h2>Fee Payment Form</h2>
             </div>
             <hr>
-            <div>
+            <div class="fee">
                 <form id="fees">
                     <div class="container">
-                        <h2>Please ensure you fill the student details correct before you proceed to pay</h2>
+                        <h6>Please ensure you fill the student details correct before you proceed to pay</h6>
                         <div id="din">
                             <label for="full name">Full Name:</label>
                             <input type="text" placeholder="Enter student/ward full name..." name="fullName" id="fullName" required>
@@ -96,20 +96,7 @@
                 </form>
             </div>
         </div>
-        <div class="form-popup col-md-5" id="resultForm">
-            <form class="form-container" id="contactForm">
-                <h1 style="text-align: center;">Check Result/Report</h1>
-
-
-                <label for="PIN"><b>Result PIN</b></label>
-                <input type="text" placeholder="Enter result PIN" id="PIN" name="PIN" required>
-                <label for="Reg. Number"><b>Reg. Number</b></label>
-                <input type="text" placeholder="Enter registration number" id="regNum" name="regNum" required>
-
-                <button type="submit" class="btn">Check</button>
-                <button type="button" class="btn cancel" onclick="closeResultForm()">Close</button>
-            </form>
-        </div>
+        
     </div>
     <hr>
 

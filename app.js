@@ -6,7 +6,9 @@ const session = require('express-session');
 const sendMail = require('./config/mail');
 const applliedAdmisssion = require('./config/models/Admission');
 const dotenv = require('dotenv');
-
+const checkResult = require('./controller/checkResult');
+const resultPIN = require('./controller/resultPIN');
+const paidPIN = require('./controller/paidPIN');
 dotenv.config({ path: '.config/.env' });
 const app = express();
 
@@ -14,10 +16,11 @@ const app = express();
 // DB config
 const db = require('./config/keys').MongoURI;
 
-// connect to Mongo
+// connection to Mongo appliedAdmission collection
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err));
+
 
 // Loading dotenv variable
 
@@ -33,56 +36,67 @@ app.use(express.urlencoded({ extended: false }));
 // Express middleware session
 app.use(session({
     secret: 'secret',
+    cookie: { maxAge: 60000 },
     resave: true,
     saveUninitialized: true
 
 }));
 
-
-
-
 // connect flash
 app.use(flash());
 
-// Global variables
-app.use((req, res, next) => {
-    res.locals.success_msg = req.flash('success_msg');
-    res.locals.error_msg = req.flash('error_msg');
-    res.locals.error = req.flash('error');
-    next();
-});
+
 
 
 // routes
 app.get('/', (req, res) => {
-    res.render('welcome')
+    res.render('welcome', {
+        errors: req.flash('errors'),
+        msg: req.flash('msg')
+    })
 })
 app.get('/about', (req, res) => res.render('about'));
-app.get('/admissions', (req, res) => res.render('admission'));
+app.get('/admissions', (req, res) => res.render('admission', {
+    errors: '',
+    msg: ''
+}));
 app.get('/entranceExam', (req, res) => res.render('entranceExam'));
-app.get('/fees', (req, res) => {
-    res.render('fees');
-});
+app.get('/fees', (req, res) => res.render('fees'));
+app.get('/buyPIN', (req, res) => res.render('buyPIN'));
 
 //post admission form request
 app.post('/email', (req, res) => {
     const name = req.body.name,
-        subject = "The Rock Foundations Admission Form request from " + name + ' ' + ' ' + req.body.subject,
+        subject = "The Rock Foundations Admission Form request from " + name + ' ' + req.body.subject,
         email = req.body.email,
-        text = "I'm requesting for " + req.body.text + " admission form(s) for my children ";
-    console.log('Data:', req.body);
-    //Send an email here...
-    sendMail(name, email, subject, text, function(err, data) {
-        if (err) {
-            res.status(500).json({ message: 'Internal Error' });
-        } else {
-            console.log('Email sent')
-            res.status(200).json({ message: 'Email sent!!!' });
-        }
-    });
-    // res.json({ message: 'Message received!' })
-});
+        Nform = req.body.Nform,
+        text = "I need " + Nform + " admission form(s) for my child(ren) ";
 
+    if (!name || !email || !Nform) {
+        console.log('Please ensure you filled all fields before sending!');
+        req.flash('errors', 'Please ensure you filled all fields before sending!');
+        return res.render('welcome', {
+            errors: req.flash('errors'),
+            msg: ''
+        });
+    } else {
+
+        //Send an email here...
+        sendMail(name, email, subject, text, function(err, data) {
+            if (err) {
+                res.status(500).json({ message: 'Internal Error' });
+            } else {
+                console.log('Email sent')
+                req.flash('msg', 'Your request has been successfully sent. A reply will be send to this ' + email + ' within 10 minutes. Thank you!');
+                return res.render('welcome', {
+                    msg: req.flash('msg'),
+                    errors: ''
+                });
+            }
+        });
+    }
+});
+app.get('/paidPIN', paidPIN);
 //post contact form 
 app.post('/contactForm', (req, res) => {
     const name = req.body.name,
@@ -90,57 +104,56 @@ app.post('/contactForm', (req, res) => {
         email = req.body.email,
         text = req.body.text;
     console.log('Data:', req.body);
-    //Send an email here...
-    sendMail(name, email, subject, text, function(err, data) {
-        if (err) {
-            res.status(500).json({ message: 'Internal Error' });
-        } else {
-            console.log('Email sent')
-            res.status(200).json({ message: 'Email sent!!!' });
-        }
-    });
-    // res.json({ message: 'Message received!' })
+
+    if (!name || !email || !text) {
+        console.log('Please ensure you filled all fields before sending!');
+        req.flash('errors', 'Please ensure you filled all fields before sending...');
+        return res.render('welcome', {
+            msg: '',
+            errors: req.flash('errors')
+        });
+    } else {
+        //Send an email here...
+        sendMail(name, email, subject, text, function(err, data) {
+            if (err) throw err;
+            else {
+                req.flash('msg', 'Your message has been successfully sent. Thanks for contacting us!');
+                res.render('welcome', {
+                    msg: req.flash('msg'),
+                    errors: ''
+
+                });
+            }
+
+        });
+    }
+
 });
 
 // Admission Handle
 app.post('/admissions', (req, res) => {
     // console.log(req.body);
     const { firstName, surName, otherName, birthdate, nationality, state, lga, entranceExamCentre, entryClass, parentName, parentPhoneNumber, parentAddress, parentEmail } = req.body;
-    let errors = [];
+    // let errors = [];
 
     // check require fields
     if (!firstName || !surName || !otherName || !birthdate || !nationality || !state || !lga || !entranceExamCentre || !entryClass || !parentName || !parentAddress || !parentPhoneNumber || !parentEmail) {
-        errors.push({ msg: 'Please fill in all fields' });
-    }
-
-    if (errors.length > 0) {
-        console.log(errors)
-        res.render('admission', {
-            errors,
-            firstName,
-            surName,
-            otherName,
-            birthdate,
-            nationality,
-            state,
-            lga,
-            entranceExamCentre,
-            entryClass,
-            parentName,
-            parentPhoneNumber,
-            parentAddress,
-            parentEmail
-        });
+        req.flash('errors', 'Please fill in all fields');
+        return res.render('admission', {
+            errors: req.flash('errors'),
+            msg: ''
+        })
     } else {
         // validation passed
         applliedAdmisssion.findOne({ firstName: firstName, surName: surName, otherName: otherName, parentEmail })
             .then(user => {
                 if (user) {
                     // user exist
-                    console.log('This student has been registered')
-                    errors.push({ msg: 'This ward has applied for this admission' })
-                    res.render('admission', {
-                        errors,
+
+                    req.flash('msg', 'Someone have apllied for this addmission with same information. Please check your details')
+                    return res.render('admission', {
+                        errors: '',
+                        msg: req.flash('msg'),
                         firstName,
                         surName,
                         otherName,
@@ -176,8 +189,8 @@ app.post('/admissions', (req, res) => {
                     newapplliedAdmisssion.save()
                         .then(user => {
                             console.log(user);
-                            req.flash('success_msg', 'Your admission details has been submitted');
-                            res.render('entranceExam', {
+                            req.flash('msg', 'Please pay for exams fee');
+                            return res.render('entranceExam', {
                                 fullName: firstName + otherName + surName,
                                 parentPhoneNumber: parentPhoneNumber,
                                 parentEmail: parentEmail,
@@ -190,6 +203,9 @@ app.post('/admissions', (req, res) => {
 
     }
 });
+app.post('/checkResult', checkResult);
+// Result PINs
+app.post('/resultPIN', resultPIN);
 
 const PORT = process.env.PORT || 7070;
 

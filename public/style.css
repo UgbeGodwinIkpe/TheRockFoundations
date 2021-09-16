@@ -1,5 +1,5 @@
 body {
-    background-image: url("images/back.jpg");
+    background-color: lightskyblue;
     /* Add the blur effect */
     /* filter: blur(8px);
     -webkit-filter: blur(8px); */
@@ -28,7 +28,8 @@ nav ul {
 }
 
 nav ul .active {
-    background-color: blue;
+    background-color: lightskyblue;
+    color:white;
     padding-bottom: 5px;
     padding-top: 5px;
 }
@@ -48,7 +49,7 @@ nav li a {
 
 nav li a:hover {
     color: white;
-    background-color: rgb(248, 245, 68);
+    background-color: lightskyblue;
     text-decoration: none;
 }
 
@@ -230,8 +231,8 @@ tr:nth-child(even) {
 #footer {
     display: inline-block;
     text-align: center !important;
-    /* position: fixed; */
-    /* bottom: 0%; */
+    /* position: fixed;
+    bottom: 0%; */
     color: black;
     width: 100%;
     background-color: honeydew;
@@ -242,10 +243,50 @@ tr:nth-child(even) {
 footer {
     display: inline-block;
     text-align: center !important;
-    position: fixed;
-    bottom: 0%;
+    /* position: fixed;
+    bottom: 0%; */
     color: rgb(90, 90, 90);
     background-color: honeydew;
     margin-left: 0!important;
     width: 200%!important;
+}
+
+.container {
+    position: relative;
+    width: 50%;
+}
+
+.image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.col-md-3 .container:hover .image {
+    opacity: 0.3;
+}
+
+.col-md-3 .container:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    background-color: #04AA6D;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
 }

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 90%;
+            margin-left: 5%;
+            /* border: 1px solid #ddd; */
+        }
+        
+        th,
+        td {
+            text-align: left;
+            padding: 2px;
+        }
+        
+        .container {
+            text-align: center;
+        }
+        
+        .term,
+        .studetails {
+            display: inline-flex;
+            margin-top: 0;
+        }
+        
+        .term h4,
+        .studetails h5 {
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="container">
+            <h3>THE ROCK FOUNDATIONS SCHOOL STUDENT'S TERMLY RESULT </h3>
+            <div class="term">
+                <h4>Class:
+                    <%= result.stuClass %>
+                </h4>
+                <h4>Term:
+                    <%= result.term %>
+                </h4>
+            </div><br>
+            <div class="studetails">
+                <h5>
+                    Student's Name:
+                    <%= result.stuName %>
+                </h5>
+                <h5>
+                    Registration Number:
+                    <%= result.regNumber %>
+                </h5>
+            </div>
+            <hr>
+            <div>
+                <table>
+                    <tr>
+                        <th>Subject</th>
+                        <th>1st Test (10%)</th>
+                        <th>2nd Test (10%)</th>
+                        <th>3rd Test (10%)</th>
+                        <th>Test Total (30%)</th>
+                        <th>Exams (70%)</th>
+                        <th>Total Score (100%)</th>
+                        <th>Grade</th>
+                        <th>Remark</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%= result.result.subject_1.subject %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_1.first_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_1.second_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_1.third_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_1.testTotal %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_1.exams %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_1.total_score %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_1.grade %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_1.remark %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <%= result.result.subject_2.subject %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_2.first_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_2.second_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_2.third_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_2.testTotal %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_2.exams %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_2.total_score %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_2.grade %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_2.remark %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <%= result.result.subject_3.subject %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_3.first_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_3.second_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_3.third_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_3.testTotal %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_3.exams %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_3.total_score %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_3.grade %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_3.remark %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <%= result.result.subject_4.subject %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_4.first_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_4.second_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_4.third_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_4.testTotal %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_4.exams %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_4.total_score %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_4.grade %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_4.remark %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <%= result.result.subject_5.subject %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_5.first_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_5.second_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_5.third_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_5.testTotal %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_5.exams %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_5.total_score %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_5.grade %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_5.remark %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <%= result.result.subject_6.subject %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_6.first_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_6.second_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_6.third_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_6.testTotal %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_6.exams %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_6.total_score %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_6.grade %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_6.remark %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <%= result.result.subject_7.subject %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_7.first_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_7.second_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_7.third_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_7.testTotal %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_7.exams %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_7.total_score %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_7.grade %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_7.remark %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <%= result.result.subject_8.subject %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_8.first_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_8.second_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_8.third_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_8.testTotal %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_8.exams %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_8.total_score %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_8.grade %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_8.remark %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <%= result.result.subject_9.subject %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_9.first_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_9.second_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_9.third_Test %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_9.testTotal %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_9.exams %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_9.total_score %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_9.grade %>
+                        </td>
+                        <td>
+                            <%= result.result.subject_9.remark %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Total
+                        </td>
+                        <td>
+                            <%= result.result.subject_1.total_score + result.result.subject_2.total_score + result.result.subject_3.total_score + result.result.subject_4.total_score + result.result.subject_5.total_score + result.result.subject_6.total_score + result.result.subject_7.total_score + result.result.subject_8.total_score + result.result.subject_9.total_score %>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+</body>
+
+</html>
