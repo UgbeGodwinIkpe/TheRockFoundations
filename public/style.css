@@ -1,5 +1,5 @@
 body {
-    background-color: lightskyblue;
+    /* background-color: lightskyblue; */
     /* Add the blur effect */
     /* filter: blur(8px);
     -webkit-filter: blur(8px); */
@@ -29,7 +29,7 @@ nav ul {
 
 nav ul .active {
     background-color: lightskyblue;
-    color:white;
+    color: white;
     padding-bottom: 5px;
     padding-top: 5px;
 }
